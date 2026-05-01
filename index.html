@@ -1,0 +1,771 @@
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>Laundry Lux - Expert Fabric Care</title>  
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">  
+
+<style>  
+:root{  
+  --blue:#38bdf8;  
+  --blue-dark:#0ea5e9;  
+}  
+  
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}  
+  
+body{  
+background:linear-gradient(135deg,#0ea5e9,#38bdf8);  
+color:#222;  
+scroll-behavior:smooth;  
+}  
+  
+/* NAVBAR */  
+header{  
+position:fixed;  
+top:0;  
+width:100%;  
+height:65px;  
+display:flex;  
+justify-content:space-between;  
+align-items:center;  
+padding:25px 40px;  
+background:white;  
+box-shadow:0 4px 20px rgba(0,0,0,0.08);  
+z-index:1000;  
+}  
+  
+.logo{  
+display:flex;  
+align-items:center;  
+gap:15px;  
+font-weight:700;  
+font-size:28px;  
+color:#0ea5e9;  
+}  
+  
+.logo img{height:60px;}  
+  
+nav a{  
+margin-left:20px;  
+text-decoration:none;  
+color:#333;  
+font-weight:500;  
+}  
+nav a:hover{color:var(--blue-dark);}  
+  
+/* MOBILE MENU */  
+.menu-toggle{  
+display:none;  
+font-size:28px;  
+cursor:pointer;  
+}  
+  
+/* HERO */  
+.hero{  
+height:100vh;  
+background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('hero.jpeg') center/cover no-repeat;  
+display:flex;  
+flex-direction:column;  
+justify-content:center;  
+align-items:center;  
+text-align:center;  
+color:white;  
+}  
+#pluto{font-size:55px;
+margin-top: 67px;}  
+.hero h1{font-size:60px;}  
+.hero p{font-size:20px;margin-top:10px;}  
+  
+.badge{  
+padding:8px 18px;  
+border-radius:30px;  
+margin-top:15px;  
+}  
+  
+.btn{  
+margin-top:20px;  
+padding:14px 30px;  
+border:none;  
+border-radius:40px;  
+background:var(--blue);  
+color:white;  
+cursor:pointer;  
+}  
+#paragraph{
+font-size: 20px;
+
+}
+/* SECTION */  
+section{padding:100px 20px;}  
+.section-title{  
+text-align:center;  
+font-size:34px;  
+color:white;  
+margin-bottom:40px;  
+}  
+  
+/* BLOCK */  
+.block{  
+background:white;  
+border-radius:20px;  
+padding:40px;  
+max-width:1100px;  
+margin:auto;  
+box-shadow:0 15px 40px rgba(0,0,0,0.1);  
+}  
+  
+/* SERVICES */  
+.services{  
+display:grid;  
+grid-template-columns:repeat(3,1fr);  
+gap:20px;  
+}  
+@media(max-width:900px){.services{grid-template-columns:repeat(2,1fr);}}  
+@media(max-width:500px){.services{grid-template-columns:1fr;}}  
+  
+.card{  
+background:white;  
+color:#0ea5e9;  
+padding:25px;  
+border-radius:15px;  
+text-align:center;  
+box-shadow:0 10px 25px rgba(0,0,0,0.08);  
+transition:0.3s;  
+font-weight:600;  
+}  
+.card:hover{  
+background:#0ea5e9;  
+color:white;  
+transform:translateY(-10px);  
+}  
+  
+/* SMALL IMAGE */  
+.price-image-box{  
+max-width:500px;  
+margin:auto;  
+cursor:pointer;  
+}  
+  
+.price-image-box img{  
+width:100%;  
+border-radius:15px;  
+box-shadow:0 10px 30px rgba(0,0,0,0.2);  
+transition:0.3s;  
+}  
+  
+.price-image-box img:hover{  
+transform:scale(1.05);  
+}  
+  
+/* FULLSCREEN MODAL */  
+.modal{  
+display:none;  
+position:fixed;  
+top:0;  
+left:0;  
+width:100%;  
+height:100%;  
+background:rgba(0,0,0,0.9);  
+justify-content:center;  
+align-items:center;  
+z-index:2000;  
+}  
+  
+.modal img{  
+max-width:90%;  
+max-height:90%;  
+border-radius:10px;  
+}  
+
+/* FORM */  
+.form-section{  
+background:linear-gradient(135deg,var(--blue),var(--blue-dark));  
+padding:30px;  
+border-radius:15px;  
+color:white;  
+max-width:900px;  
+margin:auto;  
+}  
+  
+.form-section input,  
+.form-section select,  
+.form-section textarea{  
+padding:14px;  
+border:none;  
+border-radius:10px;  
+width:100%;  
+margin-bottom:12px;  
+font-size:15px;  
+}  
+
+.form-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+}
+
+.field-label{
+display:block;
+font-size:14px;
+font-weight:600;
+margin:2px 0 8px;
+}
+
+.form-section .field-group input,
+.form-section .field-group select{
+margin-bottom:16px;
+}
+
+.radio-options{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+margin:8px 0 18px;
+}
+
+.radio-option{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:8px;
+background:white;
+color:#0ea5e9;
+border-radius:10px;
+padding:13px 10px;
+font-weight:600;
+cursor:pointer;
+}
+
+.radio-option input{
+width:auto;
+margin:0;
+accent-color:#0ea5e9;
+}
+
+.franchise-submit{
+width:100%;
+font-weight:700;
+letter-spacing:0.3px;
+}
+
+.location-row{
+display:grid;
+grid-template-columns:1fr auto;
+gap:10px;
+align-items:start;
+}
+
+.location-btn{
+background:white;
+color:#0ea5e9;
+font-size:14px;
+font-weight:700;
+padding:14px 18px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+white-space:nowrap;
+}
+  
+.submit-btn{  
+background:aquamarine;  
+color:black;  
+font-size:15px;  
+padding:14px;  
+border:none;  
+border-radius:10px;  
+cursor:pointer;  
+}  
+  
+/* GALLERY */  
+.gallery{  
+display:grid;  
+grid-template-columns:repeat(2,1fr);  
+gap:10px;  
+}  
+.gallery img{  
+width:100%;  
+height:200px;  
+border:5px solid #38bdf8;  
+object-fit:cover;  
+border-radius:10px;  
+cursor:pointer;  
+transition:0.3s;  
+}  
+
+.gallery img:hover{  
+transform:scale(1.02);  
+}  
+  
+/* CONTACT */  
+.contact{  
+background:#fff;  
+color:#000;  
+padding:30px;  
+border-radius:15px;  
+text-align:center;  
+}  
+#pen{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:14px;
+}  
+
+#pen p{
+display:none;
+}
+
+.contact-btn{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+min-height:64px;
+padding:14px 16px;
+border-radius:14px;
+background:linear-gradient(135deg,var(--blue),var(--blue-dark));
+color:white;
+text-decoration:none;
+font-weight:700;
+box-shadow:0 12px 25px rgba(14,165,233,0.28);
+transition:0.3s;
+}
+
+.contact-btn:hover{
+transform:translateY(-4px);
+box-shadow:0 16px 32px rgba(14,165,233,0.36);
+}
+
+.contact-btn svg{
+width:22px;
+height:22px;
+fill:currentColor;
+flex:0 0 auto;
+}
+
+.contact-btn span{
+line-height:1.3;
+}
+
+@media(max-width:900px){
+#pen{
+grid-template-columns:1fr;
+}
+}
+iframe{  
+width:100%;  
+height:250px;  
+border:7px solid #38bdf8;  
+border-radius:10px;  
+margin-top:15px;  
+}  
+  
+/* FOOTER */  
+footer{  
+background:white;  
+text-align:center;  
+padding:15px;  
+}  
+  
+/* FLOAT */  
+.float-btn{  
+position:fixed;  
+bottom:15px;  
+right:15px;  
+display:flex;  
+flex-direction:column;  
+gap:10px;  
+}  
+.float-btn a{  
+background:white;  
+color:#0ea5e9;  
+padding:12px 18px;  
+border-radius:50px;  
+text-decoration:none;  
+font-weight:600;  
+display:flex;  
+align-items:center;  
+gap:8px;  
+box-shadow:0 8px 18px rgba(0,0,0,0.15);  
+}  
+
+.float-btn svg{  
+width:18px;  
+height:18px;  
+fill:currentColor;  
+}  
+  
+/* MOBILE */  
+@media(max-width:768px){  
+.menu-toggle{display:block;}  
+  
+nav{  
+position:absolute;  
+top:70px;  
+right:0;  
+background:white;  
+width:200px;  
+display:flex;  
+flex-direction:column;  
+align-items:center;  
+padding:20px;  
+gap:15px;  
+transform:translateX(100%);  
+transition:0.3s;  
+}  
+nav.active{transform:translateX(0);}  
+nav a{margin:0;}
+}  
+  
+@media(max-width:600px){  
+.price-table th,  
+.price-table td{  
+padding:8px;  
+font-size:12px;  
+}  
+.note{font-size:13px;}  
+}  
+.made-by{
+  text-align:center;
+  margin-top:20px;
+}
+
+.made-by img{
+  width:80px;
+  margin-top:8px;
+}
+</style>  
+</head>  
+
+<body>  
+
+<header>  
+<div class="logo">  
+<img src="logo.jpeg">  
+Laundry Lux  
+</div>  
+
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>  
+
+<nav id="navMenu">  
+<a href="#home">Home</a>  
+<a href="#about">About</a>  
+<a href="#services">Services</a>  
+<a href="#pricing">Pricing</a>  
+<a href="#booking">Book</a>  
+<a href="#franchise">Franchise</a>  
+<a href="#contact">Contact</a>  
+</nav>  
+</header>  
+
+<section class="hero" id="home">  
+<h1 id="pluto">Laundry Lux</h1>  
+<p>Expert Fabric Care</p>  
+<div class="badge">Free 5 KM Pickup • Fast Delivery</div>  
+<button class="btn" onclick="document.getElementById('booking').scrollIntoView()">Book Pickup</button>  
+</section>  
+
+<section id="about">  
+<h2 class="section-title">About Us</h2>  
+<div class="block">  
+<p id="paragraph"><b>At Laundry Lux, we deliver world-class fabric care to your doorstep using advanced imported machinery and premium cleaning chemicals. From everyday wear to delicate garments, every item is handled with precision and care. Enjoy free pickup and delivery within a 5 km radius, along with a full range of laundry services at affordable prices. With easy online booking, keeping your clothes fresh, clean, and perfectly maintained has never been simpler.</b></p>  
+</div>  
+</section>  
+
+<section id="services">  
+<h2 class="section-title">Services</h2>  
+<div class="block services">  
+<div class="card">Dry Cleaning</div>  
+<div class="card">Express Wash</div>  
+<div class="card">Steam Iron</div>  
+<div class="card">Shoe Cleaning</div>  
+<div class="card">Curtains | Bags | Toys Washing</div>  
+<div class="card">Blankets Washing</div>  
+</div>  
+</section>  
+
+<section id="pricing">  
+<h2 class="section-title">Price List</h2>  
+
+<div class="price-image-box">  
+<img src="price.jpeg" alt="Price List" onclick="openImage()">  
+</div>  
+
+<div id="imageModal" class="modal" onclick="closeImage()">  
+<img id="modalImg">  
+</div>  
+</section>  
+
+<section id="booking">  
+<h2 class="section-title">Book Pickup</h2>  
+
+<div class="form-section">  
+<form onsubmit="sendWhatsApp(event)">  
+
+<div class="form-grid">  
+<input type="text" id="name" placeholder="Full Name" required>  
+<input type="tel" id="phone" placeholder="Phone Number" required>  
+</div>  
+
+<input type="text" id="address" placeholder="Full Address" required>  
+
+<div class="form-grid">  
+<input type="date" id="date" required>  
+<input type="time" id="time" required>  
+</div>  
+
+<select id="service">  
+<option>Dry Cleaning</option>  
+<option>Express Wash & Folding</option>  
+<option>Steam Ironing</option>  
+<option>Shoe Cleaning</option>  
+<option>Starching</option>  
+<option>Blanket Washing</option>  
+<option>Curtains, Bags, Carpets</option>   
+</select>  
+
+<div class="location-row">
+<input type="url" id="location" placeholder="Google Maps Location Link">  
+<button type="button" class="location-btn" onclick="chooseLocation()">Choose this location</button>
+</div>
+<p>Free pickup only for 5 KM radius</p>
+<textarea id="note" placeholder="Additional Details"></textarea>  
+
+<button class="submit-btn">Confirm Pickup</button>
+
+</form>  
+</div>  
+</section>  
+
+<section id="franchise">  
+<h2 class="section-title">Be a part of us</h2>  
+
+<div class="form-section">  
+<form onsubmit="sendFranchiseInquiry(event)">  
+
+<div class="form-grid">  
+<div class="field-group">
+<label class="field-label" for="franchiseFirstName">First Name *</label>
+<input type="text" id="franchiseFirstName" placeholder="Eg: John" autocomplete="given-name" required>  
+</div>
+<div class="field-group">
+<label class="field-label" for="franchiseLastName">Last Name</label>
+<input type="text" id="franchiseLastName" placeholder="Eg: Doe" autocomplete="family-name">  
+</div>
+</div>  
+
+<div class="form-grid">  
+<div class="field-group">
+<label class="field-label" for="franchisePhone">Mobile No. *</label>
+<input type="tel" id="franchisePhone" placeholder="Eg: 9988776655" autocomplete="tel" required>  
+</div>
+<div class="field-group">
+<label class="field-label" for="franchiseEmail">Email Address *</label>
+<input type="email" id="franchiseEmail" placeholder="Eg: john.doe@gmail.com" autocomplete="email" required>  
+</div>
+</div>  
+
+<div class="form-grid">  
+<div class="field-group">
+<label class="field-label" for="franchiseState">Interested State *</label>
+<select id="franchiseState" required>  
+<option value="">Select State</option>  
+<option>Kerala</option>  
+<option>Tamil Nadu</option>  
+<option>Karnataka</option>  
+<option>Other</option>  
+</select>  
+</div>
+
+<div class="field-group">
+<label class="field-label" for="franchiseCity">Interested City *</label>
+<input type="text" id="franchiseCity" placeholder="Eg: Malappuram" autocomplete="address-level2" required>  
+</div>
+</div>  
+
+<div class="field-group">
+<label class="field-label" for="franchiseInvestment">Investment Range *</label>
+<select id="franchiseInvestment" required>  
+<option value="">Select Investment Range</option>  
+<option value="below 5 lakhs">Below 5 Lakhs</option>  
+<option value="5 - 10 lakhs">5 - 10 Lakhs</option>  
+<option value="10 - 20 lakhs">10 - 20 Lakhs</option>  
+<option value="above 20 lakhs">Above 20 Lakhs</option>  
+</select>  
+</div>
+
+<p class="field-label">How soon you can invest? *</p>  
+<div class="radio-options">  
+<label class="radio-option"><input type="radio" name="investmentTime" value="Within 15 Days" required> Within 15 Days</label>  
+<label class="radio-option"><input type="radio" name="investmentTime" value="Within 30 Days"> Within 30 Days</label>  
+<label class="radio-option"><input type="radio" name="investmentTime" value="Within 60 Days"> Within 60 Days</label>  
+</div>  
+
+<button class="submit-btn franchise-submit">Submit Franchise Inquiry</button>  
+<p id="franchiseStatus" class="field-label"></p>
+
+</form>  
+</div>  
+</section>  
+
+<section>  
+<h2 class="section-title">Gallery</h2>  
+<div class="block gallery">  
+<img src="img1.jpeg" onclick="openImage('img1.jpeg')" alt="Laundry Lux gallery image">  
+<img src="img2.jpeg" onclick="openImage('img2.jpeg')" alt="Laundry Lux gallery image">  
+<img src="img4.jpeg" onclick="openImage('img4.jpeg')" alt="Laundry Lux gallery image">  
+<img src="img5.jpeg" onclick="openImage('img5.jpeg')" alt="Laundry Lux gallery image">  
+<img src="img3.jpeg" onclick="openImage('img3.jpeg')" alt="Laundry Lux gallery image">  
+<img src="img6.jpeg" onclick="openImage('img6.jpeg')" alt="Laundry Lux gallery image">  
+</div>  
+</section>  
+
+<section id="contact">  
+<h2 class="section-title">Contact</h2>  
+<div class="block contact">  
+<div id="pen">  
+<a class="contact-btn" href="tel:919747165166" aria-label="Call Laundry Lux">
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.15 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+<span>+91 9747 165 166</span>
+</a>  
+<a class="contact-btn" href="mailto:laundrylux4@gmail.com" aria-label="Email Laundry Lux">
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+<span>laundrylux4@gmail.com</span>
+</a>  
+<a class="contact-btn" href="https://www.google.com/maps/search/?api=1&query=Kolathur%2C%20Chanthappadi" target="_blank" aria-label="Open Laundry Lux location">
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/></svg>
+<span>Kolathur, Chanthappadi</span>
+</a>  
+<p>📞 +91 9747 165 166</p>  
+<p>📧 laundrylux4@gmail.com</p>  
+<p>📍 Kolathur, Chanthappadi</p>  
+</div>  
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3917.2789583671774!2d76.14250207480742!3d10.942287889216797!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba7cbc02f43f51b%3A0x74fda7900d0c03f2!2sLaundry%20Lux%20-%20Expert%20Fabric%20Care!5e0!3m2!1sen!2sin!4v1774328803602!5m2!1sen!2sin"></iframe>  
+</div>  
+</section>  
+<div class="made-by">
+  <p>Made by</p>
+  <img src="mlogo.png" alt="logo">
+</div>
+<footer>© Laundry Lux</footer>  
+
+<div class="float-btn">  
+<a href="tel:919747165166" aria-label="Call Laundry Lux">
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.15 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+Call
+</a>  
+<a href="https://wa.me/919747165166" aria-label="WhatsApp Laundry Lux">
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.34 4.95L2 22l5.28-1.38c1.45.79 3.08 1.2 4.76 1.2 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.82 14.16c-.24.68-1.2 1.25-1.93 1.41-.51.11-1.18.2-3.43-.73-2.88-1.19-4.74-4.12-4.88-4.31-.14-.19-1.17-1.55-1.17-2.96s.74-2.1 1-2.39c.24-.26.63-.38 1.01-.38.12 0 .23.01.34.01.3.01.45.03.65.51.24.58.83 2.02.9 2.17.08.15.12.33.02.52-.09.2-.14.32-.29.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.61.17.3.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.39 1.45.25.11.55.08.73-.12.23-.26.52-.68.81-1.1.21-.3.48-.34.76-.23.29.1 1.82.86 2.13 1.01.31.15.52.23.6.36.07.13.07.75-.17 1.43z"/></svg>
+WhatsApp
+</a>  
+</div>  
+
+<script>  
+function toggleMenu(){  
+document.getElementById("navMenu").classList.toggle("active");  
+}  
+
+function chooseLocation(){  
+if(!navigator.geolocation){  
+return;  
+}  
+
+navigator.geolocation.getCurrentPosition(  
+function(position){  
+let latitude = position.coords.latitude;  
+let longitude = position.coords.longitude;  
+let locationLink = `https://www.google.com/maps?q=${latitude},${longitude}`;  
+document.getElementById("location").value = locationLink;  
+},  
+function(){  
+},  
+{enableHighAccuracy:true, timeout:10000, maximumAge:0}  
+);  
+}  
+
+function sendWhatsApp(e){  
+e.preventDefault();  
+
+let name = document.getElementById('name').value;  
+let phone = document.getElementById('phone').value;  
+let address = document.getElementById('address').value;  
+let location = document.getElementById('location').value;  
+let date = document.getElementById('date').value;  
+let time = document.getElementById('time').value;  
+let pickup = date + " at " + time;  
+let service = document.getElementById('service').value;  
+let note = document.getElementById('note').value;  
+
+let msg = `New Booking:%0A  
+Name: ${name}%0A  
+Phone: ${phone}%0A  
+Pickup: ${pickup}%0A  
+Address: ${address}%0A  
+Location: ${location}%0A  
+Service: ${service}%0A  
+Note: ${note}`;  
+
+window.open(`https://wa.me/919747165166?text=${msg}`, "_blank");  
+
+alert("✅ Booking sent successfully!");  
+}  
+
+function sendFranchiseInquiry(e){  
+e.preventDefault();  
+
+let firstName = document.getElementById('franchiseFirstName').value;  
+let lastName = document.getElementById('franchiseLastName').value;  
+let phone = document.getElementById('franchisePhone').value;  
+let email = document.getElementById('franchiseEmail').value;  
+let state = document.getElementById('franchiseState').value;  
+let city = document.getElementById('franchiseCity').value;  
+let investment = document.getElementById('franchiseInvestment').value;  
+let investmentTime = document.querySelector('input[name="investmentTime"]:checked').value;  
+let status = document.getElementById('franchiseStatus');  
+let submitButton = e.target.querySelector('.franchise-submit');  
+let formData = new FormData();  
+
+formData.append('entry.789679085', firstName);  
+formData.append('entry.724457614', lastName);  
+formData.append('entry.796130515', phone);  
+formData.append('entry.821902110', email);  
+formData.append('entry.851380905', state);  
+formData.append('entry.621262877', city);  
+formData.append('entry.880272140', investment);  
+formData.append('entry.919463933', investmentTime);  
+
+submitButton.disabled = true;  
+submitButton.textContent = "Submitting...";  
+status.textContent = "";  
+
+fetch("https://docs.google.com/forms/d/e/1FAIpQLSfVbcgWSe7UJGNh7b4GHbn8ZvklGPqCfJYD9EAxKb-gf_W2Rw/formResponse", {  
+method:"POST",  
+mode:"no-cors",  
+body:formData  
+}).then(function(){  
+e.target.reset();  
+status.textContent = "Thank you. Your franchise inquiry has been submitted.";  
+}).catch(function(){  
+status.textContent = "Unable to submit right now. Please try again.";  
+}).finally(function(){  
+submitButton.disabled = false;  
+submitButton.textContent = "Submit Franchise Inquiry";  
+});  
+}  
+
+function openImage(imageSrc = "price.jpeg"){  
+let modal = document.getElementById("imageModal");  
+let img = document.getElementById("modalImg");  
+img.src = imageSrc;  
+modal.style.display = "flex";  
+}  
+
+function closeImage(){  
+document.getElementById("imageModal").style.display = "none";  
+}  
+</script>  
+
+</body>  
+</html>
